@@ -1,0 +1,61 @@
+===========================================
+Cloudflare Pages 部署配置命令
+===========================================
+
+在 Cloudflare Pages 配置页面填写以下内容：
+
+---------------------------------------------------
+1. 基本信息
+---------------------------------------------------
+Project name: psm-did-uplift
+Production branch: main
+
+---------------------------------------------------
+2. 构建设置（最重要！）
+---------------------------------------------------
+Framework preset: Next.js (Static HTML Export)
+
+Build command: npm run build:cf
+
+Build output directory: out
+
+Root directory: / (留空或填 /)
+
+Node version: 20 (或默认)
+
+---------------------------------------------------
+3. 环境变量（不需要添加）
+---------------------------------------------------
+DEPLOY_TARGET 已在构建命令中设置，无需单独添加
+
+===========================================
+关键配置总结
+===========================================
+
+✅ Build command: npm run build:cf
+✅ Build output directory: out
+✅ Framework preset: Next.js (Static HTML Export)
+
+===========================================
+配置步骤
+===========================================
+
+1. 访问：https://dash.cloudflare.com/
+2. Workers & Pages → Create application
+3. Pages → Connect to Git
+4. 选择 GitHub，授权
+5. 选择仓库：MyraWang0406/PSM-DID-uplift
+6. 填写上述配置
+7. 点击 "Save and Deploy"
+
+===========================================
+部署完成后
+===========================================
+
+访问地址：https://psm-did-uplift.pages.dev
+（或 Cloudflare 提供的自定义 URL）
+
+每次 git push 到 main 分支，Cloudflare 会自动重新部署
+
+===========================================
+

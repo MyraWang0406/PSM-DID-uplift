@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:gh": "cross-env DEPLOY_TARGET=github next build",
-    "build:cf": "cross-env DEPLOY_TARGET=cloudflare next build",
+    "build:gh": "cross-env DEPLOY_TARGET=github NEXT_PUBLIC_BASE_PATH=/PSM-DID-uplift next build",
+    "build:cf": "cross-env DEPLOY_TARGET=cloudflare NEXT_PUBLIC_BASE_PATH= next build",
     "start": "next start",
     "lint": "next lint"
   },

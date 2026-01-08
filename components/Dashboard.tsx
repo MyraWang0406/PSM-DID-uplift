@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import FunnelTable from './FunnelTable'
 import UpliftTable from './UpliftTable'
 import DIDChart from './DIDChart'
+import { withBase } from '@/lib/basePath'
 
 interface FunnelData {
   channel: string
@@ -44,11 +45,27 @@ export default function Dashboard() {
   useEffect(() => {
     const loadData = async () => {
       try {
+        const funnelUrl = withBase('/funnel_by_channel.json')
+        const upliftUrl = withBase('/uplift_by_channel.json')
+        const didUrl = withBase('/did_timeseries.json')
+
+        console.log('Loading data from:', { funnelUrl, upliftUrl, didUrl })
+
         const [funnelRes, upliftRes, didRes] = await Promise.all([
-          fetch('/funnel_by_channel.json'),
-          fetch('/uplift_by_channel.json'),
-          fetch('/did_timeseries.json'),
+          fetch(funnelUrl),
+          fetch(upliftUrl),
+          fetch(didUrl),
         ])
+
+        if (!funnelRes.ok) {
+          throw new Error(`Failed to load funnel data: ${funnelRes.status} ${funnelRes.statusText} from ${funnelUrl}`)
+        }
+        if (!upliftRes.ok) {
+          throw new Error(`Failed to load uplift data: ${upliftRes.status} ${upliftRes.statusText} from ${upliftUrl}`)
+        }
+        if (!didRes.ok) {
+          throw new Error(`Failed to load DID data: ${didRes.status} ${didRes.statusText} from ${didUrl}`)
+        }
 
         const funnel = await funnelRes.json()
         const uplift = await upliftRes.json()
@@ -59,6 +76,11 @@ export default function Dashboard() {
         setDidData(did)
       } catch (error) {
         console.error('Failed to load data:', error)
+        console.error('Actual request URLs:', {
+          funnel: withBase('/funnel_by_channel.json'),
+          uplift: withBase('/uplift_by_channel.json'),
+          did: withBase('/did_timeseries.json'),
+        })
       } finally {
         setLoading(false)
       }
@@ -71,6 +93,35 @@ export default function Dashboard() {
     return (
       <div style={{ textAlign: 'center', padding: '48px', color: '#718096' }}>
         加载中...
+      </div>
+    )
+  }
+
+  if (funnelData.length === 0 && upliftData.length === 0 && didData.length === 0) {
+    return (
+      <div style={{ 
+        textAlign: 'center', 
+        padding: '48px', 
+        color: '#ef4444',
+        backgroundColor: '#fef2f2',
+        borderRadius: '8px',
+        border: '1px solid #fecaca'
+      }}>
+        <div style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>
+          数据加载失败
+        </div>
+        <div style={{ fontSize: '14px', color: '#991b1b' }}>
+          请检查网络连接或联系技术支持
+        </div>
+        <div style={{ fontSize: '12px', color: '#dc2626', marginTop: '12px' }}>
+          请求的 URL:
+          <br />
+          {withBase('/funnel_by_channel.json')}
+          <br />
+          {withBase('/uplift_by_channel.json')}
+          <br />
+          {withBase('/did_timeseries.json')}
+        </div>
       </div>
     )
   }
