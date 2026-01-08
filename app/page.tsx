@@ -11,7 +11,7 @@ export default function Home() {
               AI导购效果分析看板
             </h1>
             <p className="wave-subtitle">
-              基于精准数据分析，评估AI导购在各渠道的效果表现
+              基于渠道询单线索及成单转化等维度的获客成本，及AI导购对转化率提升的增益，进行渠道广告预算的动态分配（数据为模拟数据）
             </p>
           </div>
         </header>
