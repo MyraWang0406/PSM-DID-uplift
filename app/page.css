@@ -1,0 +1,109 @@
+/* 统一的标题容器（包含主标题和副标题） */
+.wave-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+  border-radius: 12px;
+  padding: 24px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.wave-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: wave 3s infinite;
+}
+
+.wave-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  animation: wave 3s infinite 1.5s;
+}
+
+@keyframes wave {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 主标题样式 */
+.wave-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* 副标题样式 */
+.wave-subtitle {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
+  margin: 8px 0 0 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* 右下角联系信息 */
+.contact-info {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #1e3a8a; /* 藏蓝色 */
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  z-index: 1000;
+  min-width: 200px;
+  transition: transform 0.2s ease;
+}
+
+.contact-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .contact-info {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 16px;
+    font-size: 12px;
+    min-width: 160px;
+  }
+  
+  .wave-title {
+    font-size: 24px;
+    padding: 16px 24px;
+  }
+}
+

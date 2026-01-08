@@ -1,0 +1,72 @@
+[
+  {
+    "channel": "ASA",
+    "lead_uplift": 16.67,
+    "order_uplift": -35.29,
+    "sample_size": 733,
+    "confidence": "中"
+  },
+  {
+    "channel": "ASO",
+    "lead_uplift": -5.71,
+    "order_uplift": 120.0,
+    "sample_size": 752,
+    "confidence": "低"
+  },
+  {
+    "channel": "Affiliate",
+    "lead_uplift": 19.05,
+    "order_uplift": -20.0,
+    "sample_size": 1150,
+    "confidence": "中"
+  },
+  {
+    "channel": "Deal_Coupons",
+    "lead_uplift": -14.29,
+    "order_uplift": -30.43,
+    "sample_size": 1197,
+    "confidence": "中"
+  },
+  {
+    "channel": "Direct",
+    "lead_uplift": 6.76,
+    "order_uplift": -12.5,
+    "sample_size": 1520,
+    "confidence": "中"
+  },
+  {
+    "channel": "Facebook",
+    "lead_uplift": 20.0,
+    "order_uplift": 166.67,
+    "sample_size": 1485,
+    "confidence": "低"
+  },
+  {
+    "channel": "SEM",
+    "lead_uplift": 8.7,
+    "order_uplift": 22.22,
+    "sample_size": 2125,
+    "confidence": "中"
+  },
+  {
+    "channel": "SEO",
+    "lead_uplift": -13.04,
+    "order_uplift": 55.0,
+    "sample_size": 2668,
+    "confidence": "中"
+  },
+  {
+    "channel": "TikTok",
+    "lead_uplift": -25.4,
+    "order_uplift": 0.0,
+    "sample_size": 2117,
+    "confidence": "中"
+  },
+  {
+    "channel": "YouTube",
+    "lead_uplift": 166.67,
+    "order_uplift": 166.67,
+    "sample_size": 1233,
+    "confidence": "中"
+  }
+]

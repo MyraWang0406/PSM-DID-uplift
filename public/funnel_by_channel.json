@@ -1,0 +1,92 @@
+[
+  {
+    "channel": "SEO",
+    "sessions": 5370,
+    "leads": 189,
+    "orders": 46,
+    "lead_rate": 3.52,
+    "order_rate": 0.86,
+    "conversion_rate": 24.34
+  },
+  {
+    "channel": "SEM",
+    "sessions": 4225,
+    "leads": 241,
+    "orders": 69,
+    "lead_rate": 5.7,
+    "order_rate": 1.63,
+    "conversion_rate": 28.63
+  },
+  {
+    "channel": "TikTok",
+    "sessions": 4171,
+    "leads": 97,
+    "orders": 30,
+    "lead_rate": 2.33,
+    "order_rate": 0.72,
+    "conversion_rate": 30.93
+  },
+  {
+    "channel": "Direct",
+    "sessions": 3070,
+    "leads": 152,
+    "orders": 37,
+    "lead_rate": 4.95,
+    "order_rate": 1.21,
+    "conversion_rate": 24.34
+  },
+  {
+    "channel": "Facebook",
+    "sessions": 3008,
+    "leads": 64,
+    "orders": 14,
+    "lead_rate": 2.13,
+    "order_rate": 0.47,
+    "conversion_rate": 21.88
+  },
+  {
+    "channel": "YouTube",
+    "sessions": 2439,
+    "leads": 52,
+    "orders": 13,
+    "lead_rate": 2.13,
+    "order_rate": 0.53,
+    "conversion_rate": 25.0
+  },
+  {
+    "channel": "Deal_Coupons",
+    "sessions": 2378,
+    "leads": 114,
+    "orders": 30,
+    "lead_rate": 4.79,
+    "order_rate": 1.26,
+    "conversion_rate": 26.32
+  },
+  {
+    "channel": "Affiliate",
+    "sessions": 2302,
+    "leads": 93,
+    "orders": 23,
+    "lead_rate": 4.04,
+    "order_rate": 1.0,
+    "conversion_rate": 24.73
+  },
+  {
+    "channel": "ASO",
+    "sessions": 1537,
+    "leads": 77,
+    "orders": 21,
+    "lead_rate": 5.01,
+    "order_rate": 1.37,
+    "conversion_rate": 27.27
+  },
+  {
+    "channel": "ASA",
+    "sessions": 1500,
+    "leads": 81,
+    "orders": 22,
+    "lead_rate": 5.4,
+    "order_rate": 1.47,
+    "conversion_rate": 27.16
+  }
+]

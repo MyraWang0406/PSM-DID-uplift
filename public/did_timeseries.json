@@ -1,0 +1,200 @@
+[
+  {
+    "week": 1,
+    "week_range": "2025-01-01 至 2025-01-07",
+    "group": "control",
+    "period": "pre",
+    "lead_rate": 3.92,
+    "order_rate": 0.8,
+    "lead_count": 1759,
+    "order_count": 1759,
+    "is_campaign_week": false
+  },
+  {
+    "week": 1,
+    "week_range": "2025-01-01 至 2025-01-07",
+    "group": "treatment",
+    "period": "pre",
+    "lead_rate": 4.35,
+    "order_rate": 1.51,
+    "lead_count": 1724,
+    "order_count": 1724,
+    "is_campaign_week": false
+  },
+  {
+    "week": 2,
+    "week_range": "2025-01-08 至 2025-01-14",
+    "group": "control",
+    "period": "pre",
+    "lead_rate": 3.11,
+    "order_rate": 0.91,
+    "lead_count": 1766,
+    "order_count": 1766,
+    "is_campaign_week": false
+  },
+  {
+    "week": 2,
+    "week_range": "2025-01-08 至 2025-01-14",
+    "group": "treatment",
+    "period": "pre",
+    "lead_rate": 3.8,
+    "order_rate": 0.95,
+    "lead_count": 1791,
+    "order_count": 1791,
+    "is_campaign_week": false
+  },
+  {
+    "week": 3,
+    "week_range": "2025-01-15 至 2025-01-21",
+    "group": "control",
+    "period": "pre",
+    "lead_rate": 3.54,
+    "order_rate": 0.99,
+    "lead_count": 1722,
+    "order_count": 1722,
+    "is_campaign_week": false
+  },
+  {
+    "week": 3,
+    "week_range": "2025-01-15 至 2025-01-21",
+    "group": "treatment",
+    "period": "pre",
+    "lead_rate": 4.37,
+    "order_rate": 0.9,
+    "lead_count": 1784,
+    "order_count": 1784,
+    "is_campaign_week": false
+  },
+  {
+    "week": 4,
+    "week_range": "2025-01-22 至 2025-01-28",
+    "group": "control",
+    "period": "pre",
+    "lead_rate": 3.35,
+    "order_rate": 0.46,
+    "lead_count": 1730,
+    "order_count": 1730,
+    "is_campaign_week": false
+  },
+  {
+    "week": 4,
+    "week_range": "2025-01-22 至 2025-01-28",
+    "group": "treatment",
+    "period": "pre",
+    "lead_rate": 3.44,
+    "order_rate": 0.94,
+    "lead_count": 1800,
+    "order_count": 1800,
+    "is_campaign_week": false
+  },
+  {
+    "week": 5,
+    "week_range": "2025-01-29 至 2025-02-04",
+    "group": "control",
+    "period": "post",
+    "lead_rate": 3.54,
+    "order_rate": 0.86,
+    "lead_count": 1751,
+    "order_count": 1751,
+    "is_campaign_week": true
+  },
+  {
+    "week": 5,
+    "week_range": "2025-01-29 至 2025-02-04",
+    "group": "treatment",
+    "period": "post",
+    "lead_rate": 4.15,
+    "order_rate": 1.15,
+    "lead_count": 1735,
+    "order_count": 1735,
+    "is_campaign_week": true
+  },
+  {
+    "week": 6,
+    "week_range": "2025-02-05 至 2025-02-11",
+    "group": "control",
+    "period": "post",
+    "lead_rate": 3.55,
+    "order_rate": 1.2,
+    "lead_count": 1748,
+    "order_count": 1748,
+    "is_campaign_week": false
+  },
+  {
+    "week": 6,
+    "week_range": "2025-02-05 至 2025-02-11",
+    "group": "treatment",
+    "period": "post",
+    "lead_rate": 4.3,
+    "order_rate": 1.15,
+    "lead_count": 1745,
+    "order_count": 1745,
+    "is_campaign_week": false
+  },
+  {
+    "week": 7,
+    "week_range": "2025-02-12 至 2025-02-18",
+    "group": "control",
+    "period": "post",
+    "lead_rate": 4.01,
+    "order_rate": 1.07,
+    "lead_count": 1769,
+    "order_count": 1769,
+    "is_campaign_week": false
+  },
+  {
+    "week": 7,
+    "week_range": "2025-02-12 至 2025-02-18",
+    "group": "treatment",
+    "period": "post",
+    "lead_rate": 4.31,
+    "order_rate": 1.49,
+    "lead_count": 1742,
+    "order_count": 1742,
+    "is_campaign_week": false
+  },
+  {
+    "week": 8,
+    "week_range": "2025-02-19 至 2025-02-25",
+    "group": "control",
+    "period": "post",
+    "lead_rate": 4.52,
+    "order_rate": 1.01,
+    "lead_count": 1791,
+    "order_count": 1791,
+    "is_campaign_week": false
+  },
+  {
+    "week": 8,
+    "week_range": "2025-02-19 至 2025-02-25",
+    "group": "treatment",
+    "period": "post",
+    "lead_rate": 4.14,
+    "order_rate": 0.86,
+    "lead_count": 1740,
+    "order_count": 1740,
+    "is_campaign_week": false
+  },
+  {
+    "week": 9,
+    "week_range": "2025-02-26 至 2025-03-01",
+    "group": "control",
+    "period": "post",
+    "lead_rate": 3.63,
+    "order_rate": 0.93,
+    "lead_count": 965,
+    "order_count": 965,
+    "is_campaign_week": false
+  },
+  {
+    "week": 9,
+    "week_range": "2025-02-26 至 2025-03-01",
+    "group": "treatment",
+    "period": "post",
+    "lead_rate": 3.09,
+    "order_rate": 1.17,
+    "lead_count": 938,
+    "order_count": 938,
+    "is_campaign_week": false
+  }
+]
