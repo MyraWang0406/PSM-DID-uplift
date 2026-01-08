@@ -1,12 +1,15 @@
+const isGithub = process.env.DEPLOY_TARGET === "github";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
+  output: "export",
+  trailingSlash: true,
+  basePath: isGithub ? "/PSM-DID-uplift" : "",
+  assetPrefix: isGithub ? "/PSM-DID-uplift/" : "",
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/PSM-DID-uplift' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/PSM-DID-uplift' : '',
 }
 
 module.exports = nextConfig
