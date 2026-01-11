@@ -36,6 +36,8 @@ export default function Home() {
                   cursor: 'pointer',
                   transition: 'all 0.2s',
                   whiteSpace: 'nowrap',
+                  position: 'relative',
+                  zIndex: 10,
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
@@ -44,7 +46,7 @@ export default function Home() {
                   e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
                 }}
               >
-                📊 数据接入
+                📊 数据导入
               </button>
             </div>
           </div>

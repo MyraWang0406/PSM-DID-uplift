@@ -37,7 +37,7 @@ export default function FunnelTable({ data, onAIClick }: Props) {
             color: 'white',
             margin: '0',
           }}>
-            渠道漏斗表
+            渠道转化总览
           </h2>
           {onAIClick && (
             <button

@@ -93,7 +93,7 @@ s_1,2025-01-01,SEM,0,1,0,high,0.481`
             color: 'white',
             margin: '0',
           }}>
-            📊 数据接入与刷新
+            📊 数据导入与刷新
           </h2>
           <button
             onClick={onClose}

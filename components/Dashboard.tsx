@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react'
 import FunnelTable from './FunnelTable'
 import UpliftTable from './UpliftTable'
 import DIDChart from './DIDChart'
-import AIModal from './AIModal'
+import FunnelAIModal from './FunnelAIModal'
+import UpliftAIModal from './UpliftAIModal'
+import DIDAIModal from './DIDAIModal'
 import { withBase } from '@/lib/basePath'
 
 interface FunnelData {
@@ -42,7 +44,9 @@ export default function Dashboard() {
   const [upliftData, setUpliftData] = useState<UpliftData[]>([])
   const [didData, setDidData] = useState<DIDData[]>([])
   const [loading, setLoading] = useState(true)
-  const [isAIModalOpen, setIsAIModalOpen] = useState(false)
+  const [isFunnelAIModalOpen, setIsFunnelAIModalOpen] = useState(false)
+  const [isUpliftAIModalOpen, setIsUpliftAIModalOpen] = useState(false)
+  const [isDIDAIModalOpen, setIsDIDAIModalOpen] = useState(false)
 
   useEffect(() => {
     const loadData = async () => {
@@ -135,27 +139,36 @@ export default function Dashboard() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
           <FunnelTable 
             data={funnelData}
-            onAIClick={() => setIsAIModalOpen(true)}
+            onAIClick={() => setIsFunnelAIModalOpen(true)}
           />
           <UpliftTable 
             data={upliftData} 
-            onAIClick={() => setIsAIModalOpen(true)}
+            onAIClick={() => setIsUpliftAIModalOpen(true)}
           />
         </div>
         
         {/* DID 图表 */}
         <DIDChart 
           data={didData}
-          onAIClick={() => setIsAIModalOpen(true)}
+          onAIClick={() => setIsDIDAIModalOpen(true)}
         />
       </div>
       
-      {/* AI分析师弹窗 */}
-      <AIModal 
-        isOpen={isAIModalOpen} 
-        onClose={() => setIsAIModalOpen(false)}
-        upliftData={upliftData}
-        didData={didData}
+      {/* 各模块独立的AI分析弹窗 */}
+      <FunnelAIModal 
+        isOpen={isFunnelAIModalOpen} 
+        onClose={() => setIsFunnelAIModalOpen(false)}
+        data={funnelData}
+      />
+      <UpliftAIModal 
+        isOpen={isUpliftAIModalOpen} 
+        onClose={() => setIsUpliftAIModalOpen(false)}
+        data={upliftData}
+      />
+      <DIDAIModal 
+        isOpen={isDIDAIModalOpen} 
+        onClose={() => setIsDIDAIModalOpen(false)}
+        data={didData}
       />
     </>
   )

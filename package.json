@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "build:gh": "cross-env DEPLOY_TARGET=github NEXT_PUBLIC_BASE_PATH=/PSM-DID-uplift next build",
     "build:cf": "cross-env DEPLOY_TARGET=cloudflare NEXT_PUBLIC_BASE_PATH= next build",
