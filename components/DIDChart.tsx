@@ -16,9 +16,10 @@ interface DIDData {
 
 interface Props {
   data: DIDData[]
+  onAIClick?: () => void
 }
 
-export default function DIDChart({ data }: Props) {
+export default function DIDChart({ data, onAIClick }: Props) {
   // 处理数据：按周分组，分别计算 treatment 和 control 的平均值
   const weekData: Record<number, {
     week: number
@@ -68,14 +69,41 @@ export default function DIDChart({ data }: Props) {
         padding: '16px 24px',
         marginBottom: '0',
       }}>
-        <h2 style={{
-          fontSize: '18px',
-          fontWeight: 600,
-          color: 'white',
-          margin: '0',
-        }}>
-          DID 时间序列分析
-        </h2>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h2 style={{
+            fontSize: '18px',
+            fontWeight: 600,
+            color: 'white',
+            margin: '0',
+          }}>
+            DID 时间序列分析
+          </h2>
+          {onAIClick && (
+            <button
+              onClick={onAIClick}
+              style={{
+                padding: '6px 12px',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                color: 'white',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                borderRadius: '6px',
+                fontSize: '12px',
+                fontWeight: 500,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+              }}
+              title="查看AI分析师结论"
+            >
+              🤖 AI分析
+            </button>
+          )}
+        </div>
       </div>
       <div style={{ padding: '24px' }}>
       <div style={{ marginBottom: '32px' }}>

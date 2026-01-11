@@ -23,11 +23,13 @@ interface DIDData {
 }
 
 interface Props {
+  isOpen: boolean
+  onClose: () => void
   upliftData: UpliftData[]
   didData: DIDData[]
 }
 
-export default function AIAnalyst({ upliftData, didData }: Props) {
+export default function AIModal({ isOpen, onClose, upliftData, didData }: Props) {
   const analysis = useMemo(() => {
     if (upliftData.length === 0 || didData.length === 0) {
       return null
@@ -52,7 +54,7 @@ export default function AIAnalyst({ upliftData, didData }: Props) {
     const didLeadUplift = preControlLead > 0 ? (didLead / preControlLead) * 100 : 0
     const didOrderUplift = preControlOrder > 0 ? (didOrder / preControlOrder) * 100 : 0
 
-    // 找出效果最好的渠道（高可信度且提升率高的）
+    // 找出效果最好的渠道
     const highConfidenceChannels = upliftData
       .filter(d => d.confidence === '高' && (d.lead_uplift > 0 || d.order_uplift > 0))
       .sort((a, b) => (b.lead_uplift + b.order_uplift) - (a.lead_uplift + a.order_uplift))
@@ -61,7 +63,6 @@ export default function AIAnalyst({ upliftData, didData }: Props) {
       .filter(d => d.confidence === '中' && (d.lead_uplift > 0 || d.order_uplift > 0))
       .sort((a, b) => (b.lead_uplift + b.order_uplift) - (a.lead_uplift + a.order_uplift))
 
-    // 生成分析结论
     const recommendations: string[] = []
     
     if (highConfidenceChannels.length > 0) {
@@ -80,7 +81,6 @@ export default function AIAnalyst({ upliftData, didData }: Props) {
       )
     }
 
-    // 找出需要关注的渠道
     const negativeChannels = upliftData.filter(d => d.lead_uplift < -10 || d.order_uplift < -10)
     if (negativeChannels.length > 0) {
       negativeChannels.forEach(channel => {
@@ -90,7 +90,6 @@ export default function AIAnalyst({ upliftData, didData }: Props) {
       })
     }
 
-    // 整体结论
     let overallConclusion = ''
     if (didOrderUplift > 5) {
       overallConclusion = `整体来看，AI导购效果显著：扣除时间趋势后，Order率额外提升 ${didOrderUplift.toFixed(1)}%，说明AI确实带来了真实的转化提升。`
@@ -108,97 +107,152 @@ export default function AIAnalyst({ upliftData, didData }: Props) {
     }
   }, [upliftData, didData])
 
-  if (!analysis) {
-    return null
-  }
+  if (!isOpen) return null
 
   return (
-    <div style={{
-      background: 'white',
-      borderRadius: '12px',
-      padding: '0',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-      border: '2px solid #3b82f6',
-      overflow: 'hidden',
-    }}>
-      <div style={{
-        background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-        padding: '16px 24px',
-        marginBottom: '0',
-      }}>
-        <h2 style={{
-          fontSize: '18px',
-          fontWeight: 600,
-          color: 'white',
-          margin: '0',
-        }}>
-          🤖 AI分析师自动结论
-        </h2>
-      </div>
-      <div style={{ padding: '24px' }}>
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+      }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          background: 'white',
+          borderRadius: '12px',
+          padding: '0',
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          border: '2px solid #3b82f6',
+          maxWidth: '700px',
+          width: '90%',
+          maxHeight: '90vh',
+          overflow: 'auto',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div style={{
-          backgroundColor: '#f0f9ff',
-          borderLeft: '4px solid #3b82f6',
-          padding: '16px',
-          borderRadius: '8px',
-          marginBottom: '20px',
+          background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+          padding: '16px 24px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}>
-          <div style={{
-            fontSize: '14px',
-            lineHeight: '1.6',
-            color: '#1e40af',
-            whiteSpace: 'pre-line',
-          }}>
-            {analysis.overallConclusion}
-          </div>
-        </div>
-
-        <div style={{ marginTop: '20px' }}>
-          <h3 style={{
-            fontSize: '16px',
+          <h2 style={{
+            fontSize: '18px',
             fontWeight: 600,
-            color: '#1a202c',
-            marginBottom: '12px',
+            color: 'white',
+            margin: '0',
           }}>
-            渠道建议
-          </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {analysis.recommendations.map((rec, index) => (
-              <div
-                key={index}
-                style={{
-                  padding: '12px 16px',
-                  backgroundColor: '#f8fafc',
-                  borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
+            🤖 AI分析师自动结论
+          </h2>
+          <button
+            onClick={onClose}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'white',
+              fontSize: '24px',
+              cursor: 'pointer',
+              padding: '0',
+              width: '32px',
+              height: '32px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '4px',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent'
+            }}
+          >
+            ×
+          </button>
+        </div>
+        <div style={{ padding: '24px' }}>
+          {analysis ? (
+            <>
+              <div style={{
+                backgroundColor: '#f0f9ff',
+                borderLeft: '4px solid #3b82f6',
+                padding: '16px',
+                borderRadius: '8px',
+                marginBottom: '20px',
+              }}>
+                <div style={{
                   fontSize: '14px',
                   lineHeight: '1.6',
-                  color: '#4a5568',
-                }}
-              >
-                <div dangerouslySetInnerHTML={{ 
-                  __html: rec.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1a202c;">$1</strong>')
-                }} />
+                  color: '#1e40af',
+                  whiteSpace: 'pre-line',
+                }}>
+                  {analysis.overallConclusion}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        <div style={{
-          marginTop: '20px',
-          padding: '12px',
-          backgroundColor: '#f7fafc',
-          borderRadius: '8px',
-          fontSize: '12px',
-          color: '#718096',
-        }}>
-          <strong style={{ color: '#4a5568' }}>分析方法说明：</strong>
-          <br />
-          • DID（时间趋势分析）：扣除了节假日、促销等时间因素影响，更准确
-          <br />
-          • PSM（精准匹配）：排除了用户本身差异，确保对比公平
-          <br />
-          • 建议基于两种方法的一致性，可信度更高
+              <div style={{ marginTop: '20px' }}>
+                <h3 style={{
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  color: '#1a202c',
+                  marginBottom: '12px',
+                }}>
+                  渠道建议
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {analysis.recommendations.map((rec, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        padding: '12px 16px',
+                        backgroundColor: '#f8fafc',
+                        borderRadius: '8px',
+                        border: '1px solid #e2e8f0',
+                        fontSize: '14px',
+                        lineHeight: '1.6',
+                        color: '#4a5568',
+                      }}
+                    >
+                      <div dangerouslySetInnerHTML={{ 
+                        __html: rec.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #1a202c;">$1</strong>')
+                      }} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{
+                marginTop: '20px',
+                padding: '12px',
+                backgroundColor: '#f7fafc',
+                borderRadius: '8px',
+                fontSize: '12px',
+                color: '#718096',
+              }}>
+                <strong style={{ color: '#4a5568' }}>分析方法说明：</strong>
+                <br />
+                • DID（时间趋势分析）：扣除了节假日、促销等时间因素影响，更准确
+                <br />
+                • PSM（精准匹配）：排除了用户本身差异，确保对比公平
+                <br />
+                • 建议基于两种方法的一致性，可信度更高
+              </div>
+            </>
+          ) : (
+            <div style={{ textAlign: 'center', padding: '48px', color: '#718096' }}>
+              数据加载中...
+            </div>
+          )}
         </div>
       </div>
     </div>

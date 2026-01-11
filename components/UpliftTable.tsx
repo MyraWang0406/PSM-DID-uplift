@@ -10,9 +10,10 @@ interface UpliftData {
 
 interface Props {
   data: UpliftData[]
+  onAIClick?: () => void
 }
 
-export default function UpliftTable({ data }: Props) {
+export default function UpliftTable({ data, onAIClick }: Props) {
   const getConfidenceColor = (confidence: string) => {
     switch (confidence) {
       case '高':
@@ -58,6 +59,7 @@ export default function UpliftTable({ data }: Props) {
         padding: '16px 24px',
         marginBottom: '0',
       }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2 style={{
           fontSize: '18px',
           fontWeight: 600,
@@ -66,6 +68,32 @@ export default function UpliftTable({ data }: Props) {
         }}>
           PSM Uplift 表
         </h2>
+        {onAIClick && (
+          <button
+            onClick={onAIClick}
+            style={{
+              padding: '6px 12px',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              color: 'white',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              borderRadius: '6px',
+              fontSize: '12px',
+              fontWeight: 500,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.3)'
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'
+            }}
+            title="查看AI分析师结论"
+          >
+            🤖 AI分析
+          </button>
+        )}
+      </div>
       </div>
       <div style={{ padding: '24px' }}>
       <div style={{ overflowX: 'auto' }}>

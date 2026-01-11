@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 import FunnelTable from './FunnelTable'
 import UpliftTable from './UpliftTable'
 import DIDChart from './DIDChart'
-import AIAnalyst from './AIAnalyst'
-import DataManagement from './DataManagement'
+import AIModal from './AIModal'
 import { withBase } from '@/lib/basePath'
 
 interface FunnelData {
@@ -43,6 +42,7 @@ export default function Dashboard() {
   const [upliftData, setUpliftData] = useState<UpliftData[]>([])
   const [didData, setDidData] = useState<DIDData[]>([])
   const [loading, setLoading] = useState(true)
+  const [isAIModalOpen, setIsAIModalOpen] = useState(false)
 
   useEffect(() => {
     const loadData = async () => {
@@ -129,22 +129,35 @@ export default function Dashboard() {
   }
 
   return (
-    <div style={{ display: 'grid', gap: '24px' }}>
-      {/* 数据接入与刷新 */}
-      <DataManagement />
-      
-      {/* AI分析师自动结论 */}
-      <AIAnalyst upliftData={upliftData} didData={didData} />
-      
-      {/* 数据表格 */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
-        <FunnelTable data={funnelData} />
-        <UpliftTable data={upliftData} />
+    <>
+      <div style={{ display: 'grid', gap: '24px' }}>
+        {/* 数据表格 */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
+          <FunnelTable 
+            data={funnelData}
+            onAIClick={() => setIsAIModalOpen(true)}
+          />
+          <UpliftTable 
+            data={upliftData} 
+            onAIClick={() => setIsAIModalOpen(true)}
+          />
+        </div>
+        
+        {/* DID 图表 */}
+        <DIDChart 
+          data={didData}
+          onAIClick={() => setIsAIModalOpen(true)}
+        />
       </div>
       
-      {/* DID 图表 */}
-      <DIDChart data={didData} />
-    </div>
+      {/* AI分析师弹窗 */}
+      <AIModal 
+        isOpen={isAIModalOpen} 
+        onClose={() => setIsAIModalOpen(false)}
+        upliftData={upliftData}
+        didData={didData}
+      />
+    </>
   )
 }
 
