@@ -62,4 +62,44 @@ This prototype is not only a dashboard. Its main contribution is translating cau
 It explores how product or growth operators can move from:
 
 ```text
-metric changed
+metric changed to:
+
+what changed, for whom, compared with whom, under what assumption, and with what uncertainty
+Example Workflow
+The user selects a campaign, channel, or intervention.
+The system displays observed performance changes.
+The user inspects whether treated and comparison users differ.
+The system presents matching or before-after comparison logic.
+The user reviews possible causal explanations and limitations.
+The system supports a cautious decision summary.
+Relation to Other Prototypes
+
+This project extends my broader work on traceable AI-assisted decision-making into causal and operational analytics.
+
+ADX-Mirix-1.15-cursor focuses on white-box diagnosis in automated advertising workflows.
+Agent-Assisted-User-Research-and-Decision-Support focuses on user research and consumer insight workflows.
+PSM-DID-uplift focuses on causal reasoning and attribution under operational uncertainty.
+Evaluation Plan
+
+This prototype can be evaluated through:
+
+user understanding of causal assumptions
+ability to distinguish correlation from possible causation
+perceived usefulness for campaign diagnosis
+clarity of treatment / control comparison
+decision confidence before and after causal explanation
+risk of over-trusting causal outputs
+Current Limitations
+This is a research prototype, not a validated causal inference tool.
+The current interface simplifies statistical assumptions.
+The system may use simulated or simplified data.
+It does not replace expert statistical analysis.
+Further work is needed to support robust diagnostics, sensitivity analysis, and uncertainty communication.
+Tech Stack
+Frontend: Web-based dashboard
+Deployment: Cloudflare Pages
+Methods: PSM-inspired comparison, DID-inspired comparison, uplift reasoning
+Data: Demo or simulated traffic attribution scenarios
+License
+
+This repository is for research and portfolio demonstration purposes.
