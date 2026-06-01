@@ -2,7 +2,7 @@
 
 This repository contains a research prototype for exploring how causal inference concepts can support more inspectable traffic attribution and operational decision-making.
 
-The system is not intended as a production causal inference platform. It is a prototype for studying how methods such as PSM, DID, and uplift modeling can be translated into decision-support workflows for product and growth teams.
+The system is not intended as a production causal inference platform. It is a prototype for studying how methods such as PSM, DID, and uplift reasoning can be translated into decision-support workflows for product and growth teams.
 
 ## Project Information
 
@@ -12,14 +12,14 @@ The system is not intended as a production causal inference platform. It is a pr
 | Repository | https://github.com/MyraWang0406/PSM-DID-uplift |
 | Live Demo | https://traffic-attribution.myrawzm0406.online/ |
 | Research Area | Causal Reasoning, Decision Support, Product Analytics, Human-AI Collaboration |
-| Main Methods | PSM, DID, uplift reasoning, dashboard-based interpretation |
+| Main Methods | PSM-inspired comparison, DID-inspired comparison, uplift reasoning, dashboard-based interpretation |
 | Intended Use | Research demonstration, not production deployment |
 
 ## Research Motivation
 
-Product and growth teams often need to evaluate whether a traffic source, campaign, notification strategy, or intervention actually caused an outcome.
+Product and growth teams often need to evaluate whether a traffic source, campaign, notification strategy, or operational intervention actually caused an observed outcome.
 
-In practice, many decisions are made from surface-level metrics such as conversion rate, click-through rate, or retention change. These metrics are useful, but they can be misleading when user groups differ, interventions are not randomly assigned, or external factors change over time.
+In practice, many decisions are made from surface-level metrics such as conversion rate, click-through rate, retention change, or revenue lift. These metrics are useful, but they can be misleading when user groups differ, interventions are not randomly assigned, or external factors change over time.
 
 This prototype explores how causal inference concepts can be represented in a more understandable and inspectable decision-support interface.
 
@@ -35,7 +35,7 @@ RQ3. How can dashboards support causal reasoning without overstating statistical
 
 The prototype demonstrates a traffic attribution workflow that connects business questions with causal reasoning methods.
 
-It explores how users can inspect:
+It helps users inspect:
 
 - treatment and control groups
 - before-and-after changes
@@ -59,47 +59,63 @@ It explores how users can inspect:
 
 This prototype is not only a dashboard. Its main contribution is translating causal reasoning into an interaction workflow.
 
-It explores how product or growth operators can move from:
+The system explores how product or growth operators can move from a simple metric observation:
 
-```text
-metric changed to:
+"the metric changed"
 
-what changed, for whom, compared with whom, under what assumption, and with what uncertainty
-Example Workflow
-The user selects a campaign, channel, or intervention.
-The system displays observed performance changes.
-The user inspects whether treated and comparison users differ.
-The system presents matching or before-after comparison logic.
-The user reviews possible causal explanations and limitations.
-The system supports a cautious decision summary.
-Relation to Other Prototypes
+to a more inspectable causal question:
+
+"what changed, for whom, compared with whom, under what assumption, and with what uncertainty?"
+
+## Example Workflow
+
+1. The user selects a campaign, channel, or intervention.
+2. The system displays observed performance changes.
+3. The user inspects whether treated and comparison users differ.
+4. The system presents matching or before-after comparison logic.
+5. The user reviews possible causal explanations and limitations.
+6. The system supports a cautious decision summary.
+
+## Relation to Other Prototypes
 
 This project extends my broader work on traceable AI-assisted decision-making into causal and operational analytics.
 
-ADX-Mirix-1.15-cursor focuses on white-box diagnosis in automated advertising workflows.
-Agent-Assisted-User-Research-and-Decision-Support focuses on user research and consumer insight workflows.
-PSM-DID-uplift focuses on causal reasoning and attribution under operational uncertainty.
-Evaluation Plan
+- `ADX-Mirix-1.15-cursor` focuses on white-box diagnosis in automated advertising workflows.
+- `Agent-Assisted-User-Research-and-Decision-Support` focuses on user research and consumer insight workflows.
+- `PSM-DID-uplift` focuses on causal reasoning and attribution under operational uncertainty.
+
+## Evaluation Plan
 
 This prototype can be evaluated through:
 
-user understanding of causal assumptions
-ability to distinguish correlation from possible causation
-perceived usefulness for campaign diagnosis
-clarity of treatment / control comparison
-decision confidence before and after causal explanation
-risk of over-trusting causal outputs
-Current Limitations
-This is a research prototype, not a validated causal inference tool.
-The current interface simplifies statistical assumptions.
-The system may use simulated or simplified data.
-It does not replace expert statistical analysis.
-Further work is needed to support robust diagnostics, sensitivity analysis, and uncertainty communication.
-Tech Stack
-Frontend: Web-based dashboard
-Deployment: Cloudflare Pages
-Methods: PSM-inspired comparison, DID-inspired comparison, uplift reasoning
-Data: Demo or simulated traffic attribution scenarios
-License
+- user understanding of causal assumptions
+- ability to distinguish correlation from possible causation
+- perceived usefulness for campaign diagnosis
+- clarity of treatment / control comparison
+- decision confidence before and after causal explanation
+- risk of over-trusting causal outputs
+
+## Current Limitations
+
+- This is a research prototype, not a validated causal inference tool.
+- The current interface simplifies statistical assumptions.
+- The system may use simulated or simplified data.
+- It does not replace expert statistical analysis.
+- Further work is needed to support robust diagnostics, sensitivity analysis, and uncertainty communication.
+
+## Tech Stack
+
+| Layer | Description |
+|---|---|
+| Frontend | Web-based dashboard |
+| Deployment | Cloudflare Pages |
+| Methods | PSM-inspired comparison, DID-inspired comparison, uplift reasoning |
+| Data | Demo or simulated traffic attribution scenarios |
+
+## Status and Scope
+
+This repository is intended to demonstrate interaction logic, workflow design, and research framing. It is not a production-ready attribution system.
+
+## License
 
 This repository is for research and portfolio demonstration purposes.
